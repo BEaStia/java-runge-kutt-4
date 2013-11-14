@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import mpi.*;
 
+//@SuppressWarnings("ALL")
 public class Main {
 
     public static List<Double> zeroArgs;
@@ -13,6 +14,7 @@ public class Main {
 
         int me = MPI.COMM_WORLD.Rank();
         int size = MPI.COMM_WORLD.Size();
+        System.out.println("Hi from "+me+"/"+size);
         int k = 5;
         int xesCount=factors.length;
 

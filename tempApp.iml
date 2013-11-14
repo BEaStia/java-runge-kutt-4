@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="mpj" level="application" />
+    <orderEntry type="library" exported="" name="mpj" level="application" />
   </component>
 </module>
 
