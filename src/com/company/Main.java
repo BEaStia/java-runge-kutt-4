@@ -1,16 +1,18 @@
-package com.company;
-
 import java.util.ArrayList;
 import java.util.List;
+import mpi.*;
 
 public class Main {
 
     public static List<Double> zeroArgs;
     public static double h;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
+        MPI.Init(args);
 
+        int me = MPI.COMM_WORLD.Rank();
+        int size = MPI.COMM_WORLD.Size();
         int k = 5;
         int xesCount=factors.length;
 
@@ -20,9 +22,9 @@ public class Main {
         zeroArgs.add(0.8);
         zeroArgs.add(1.0);
 
-        Main.h = 0.00001; // шаг
+        Main.h = 0.1; // шаг
         List<Double[][]> results = new ArrayList<Double[][]>();
-        for(; r(zeroArgs.get(0), 2)<100.0; zeroArgs.set(0,zeroArgs.get(0)+h)) {
+        for(; r(zeroArgs.get(0), 2)<1.0; zeroArgs.set(0,zeroArgs.get(0)+h)) {
             Double[][] alist = new Double[xesCount][5];
             List<Double> StartArgs;
             List<Double> newArgs=new ArrayList<Double>();
@@ -51,6 +53,7 @@ public class Main {
             zeroArgs = newArgs;
 
         }
+        MPI.Finalize();
 
     }
     public static double[][] factors = {{1,2,5},{3,4,6},{7,-8,-9}};
